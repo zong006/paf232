@@ -6,7 +6,7 @@ NOTE!!
 
 
 Task 2.1: 
-mongoimport -d bedandbreakfast -c listings_and_reviews --type=json --file=../data/listings.json
+mongoimport -d bedandbreakfast -c listings_and_reviews --type=json --file=../data/listings.json --uri=<<insert railway public uri>>
 
 
 
@@ -75,10 +75,15 @@ db.listings_and_reviews.aggregate([
 
 Task 2.4
 
-db.listings.aggregate([{$unset:"reviews"}])
+db.listings.aggregate([
+    {$unset:"reviews"},
+    {
+        $out: "listings"
+    }
+])
 
 
 
 Task 2.5
 
-mongoexport --db=bedandbreakfast --collection=reviews --type=csv --fields=date,listing_id,reviewer_name,comments --out=../data/reviews.csv   
+mongoexport --db=bedandbreakfast --collection=reviews --type=csv --fields=date,listing_id,reviewer_name,comments --out=../data/reviews.csv  --uri=<<railway mongodb uri>>
