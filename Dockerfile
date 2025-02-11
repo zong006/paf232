@@ -6,11 +6,11 @@
     
     WORKDIR ${COMPIILE_DIR}
     
-    COPY bedandbreakfast/pom.xml .
-    COPY bedandbreakfast/mvnw .
-    COPY bedandbreakfast/mvnw.cmd .
-    COPY bedandbreakfast/src src
-    COPY bedandbreakfast/.mvn .mvn 
+    COPY bedandbreakfastapp/pom.xml .
+    COPY bedandbreakfastapp/mvnw .
+    COPY bedandbreakfastapp/mvnw.cmd .
+    COPY bedandbreakfastapp/src src
+    COPY bedandbreakfastapp/.mvn .mvn 
     
     RUN mvn package -Dmaven.test.skip=true
     
