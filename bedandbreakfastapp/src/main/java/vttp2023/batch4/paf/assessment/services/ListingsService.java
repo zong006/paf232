@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import vttp2023.batch4.paf.assessment.exception.BookingException;
 import vttp2023.batch4.paf.assessment.models.Accommodation;
 import vttp2023.batch4.paf.assessment.models.AccommodationSummary;
 import vttp2023.batch4.paf.assessment.models.Bookings;
@@ -79,10 +80,10 @@ public class ListingsService {
 			}
 			
 			bookingsRepository.newBookings(booking);
-		} catch (RuntimeException e) {
+		} catch (Exception e) {
 			
 			e.printStackTrace();
-			throw new RuntimeException();
+			throw new BookingException("Booking failed..: " + e.getMessage());
 		}
 	}
 

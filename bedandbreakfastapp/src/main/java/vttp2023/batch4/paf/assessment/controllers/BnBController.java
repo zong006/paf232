@@ -101,15 +101,8 @@ public class BnBController {
 		bookings.setListingId(params.get("id"));
 		bookings.setName(params.get("name"));
 
-		try {
-			listingsSvc.createBooking(bookings);
-			return ResponseEntity.ok().body("");
-		} catch (RuntimeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-
-			return ResponseEntity.status(500).body("Booking was unsuccessful..");
-		}
 		
+		listingsSvc.createBooking(bookings);
+		return ResponseEntity.ok().body("");
 	}
 }
